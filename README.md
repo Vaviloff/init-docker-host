@@ -3,5 +3,5 @@
 For personal usage.
 
 ```sh
-sudo SSH_PORT=7890 curl -L https://raw.githubusercontent.com/Vaviloff/init-docker-host/main/init.sh | bash
+curl -L https://raw.githubusercontent.com/Vaviloff/init-docker-host/main/init.sh | sudo SSH_PORT=7890 bash
 ```
