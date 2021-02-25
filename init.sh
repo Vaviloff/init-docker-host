@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo apt update
+apt update
 
 # zsh
-sudo apt install -yq zsh build-essential curl git wget htop tmux mc
+apt install -yq zsh build-essential curl git wget htop tmux mc
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -18,18 +18,18 @@ nvm install 14
 npm i -g yarn
 
 # docker
-sudo apt install -yq apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt update
+apt install -yq apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt update
 apt-cache policy docker-ce
-sudo apt install -yq docker-ce
+apt install -yq docker-ce
 # loki logging driver
-sudo docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 
 # docker-compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # Non-standard ssh port
 if [ "$SSH_PORT" != "" ]; then
@@ -42,6 +42,6 @@ fi
 node --version
 npm --version
 yarn --version
-sudo docker --version
-sudo docker-compose --version
-sudo docker plugin ls
+docker --version
+docker-compose --version
+docker plugin ls
