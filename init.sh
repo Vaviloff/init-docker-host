@@ -31,6 +31,13 @@ sudo docker plugin install grafana/loki-docker-driver:latest --alias loki --gran
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# Non-standard ssh port
+if [ "$SSH_PORT" != "" ]; then
+  echo "Changing port to $SSH_PORT"
+  echo "Port $SSH_PORT" >> /etc/ssh/sshd_config
+  service ssh restart
+fi
+
 # check
 node --version
 npm --version
